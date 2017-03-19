@@ -13,7 +13,7 @@ Features:
 9)	Nearly 1.5 MB of XAP file.
 10) Notes are stored under secured folder structure (IsolatedStorageFile of System.IO.IsolatedStorage)
 
-Steps to install Sticky Note :
+Steps to install Sticky Note (inside StickyNoteInstaller folder):
 1)	Prerequisite: Silverlight 4 plug-in:
 Latest silverlight plug-in can be installed from below link. http://www.microsoft.com/getsilverlight/Get-Started/Install/ 
 2)	Download the Installer zip folder onto your local system (recommonded onto desktop). Then unzip the folder.
