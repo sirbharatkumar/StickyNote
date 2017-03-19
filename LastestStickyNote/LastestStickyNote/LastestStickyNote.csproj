@@ -69,13 +69,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Liquid.Popup, Version=5.3.2.41288, Culture=neutral, PublicKeyToken=7fbdd25c3fcc3919, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\trunk\R&amp;D\LastestStickyNote V2\LastestStickyNote\External\Liquid.Popup.dll</HintPath>
-    </Reference>
-    <Reference Include="Lite.ExcelLibrary">
-      <HintPath>..\..\..\Source\LiteExcelLibrary\Bin\Debug\Lite.ExcelLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="mscorlib" />
     <Reference Include="System.Windows" />
@@ -174,6 +167,12 @@
     <Content Include="XML\StickyNotes.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Liquid Controls 5_3_2 Source\Liquid.Popup\Liquid.Popup.csproj">
+      <Project>{608e1fc5-5ca1-4d87-bc18-819559e7fda6}</Project>
+      <Name>Liquid.Popup</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
