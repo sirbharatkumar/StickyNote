@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Liquid Controls 5_3_2 Source/Liquid.Popup/Bin/Debug
+/Liquid Controls 5_3_2 Source/Liquid.Popup/obj/Debug
+/LastestStickyNote/LastestStickyNote/Bin/Debug
+/LastestStickyNote/LastestStickyNote/obj/Debug

@@ -1,0 +1,527 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Liquid;assembly=Liquid">
+    
+    <!-- Liquid Controls ColorSelector -->
+    <Style TargetType="local:ColorSelector">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="23" />
+        <Setter Property="CustomVisibility" Value="Visible" />
+        <Setter Property="AddColorVisibility" Value="Visible" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorSelector">
+                    <local:DropDown x:Name="RootElement">
+                        <local:DropDown.SelectedItemContent>
+                            <local:ColorItem x:Name="ElementSelectedColor" IsHitTestVisible="False" />
+                        </local:DropDown.SelectedItemContent>
+                        <Border BorderBrush="#888888" BorderThickness="1" Background="#ffffff" Width="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <local:ItemViewer x:Name="ElementViewer" Grid.Row="0" Width="148" BorderThickness="0" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" />
+                                <Rectangle Grid.Row="1" Height="1" Fill="#888888" Margin="4 2 4 2" Visibility="{TemplateBinding CustomVisibility}" />
+                                <StackPanel x:Name="ElementCustom" Grid.Row="2" Margin="2" Orientation="Horizontal" Visibility="{TemplateBinding CustomVisibility}" />
+                                <Button x:Name="ElementAdd" Grid.Row="3" Margin="8 2 8 4" Content="More Colors..." Visibility="{TemplateBinding AddColorVisibility}" />
+                            </Grid>
+                        </Border>
+                    </local:DropDown>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End ColorSelector -->
+    
+    <!-- Liquid Controls ColorItem -->
+    <Style TargetType="local:ColorItem">
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorItem">
+                    <Grid x:Name="RootElement">
+                        <Rectangle x:Name="ElementSelected" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" />
+                        <Rectangle x:Name="ElementHover" Stroke="{TemplateBinding BorderBrush}" Opacity="0.4" />
+                        <Rectangle Margin="{TemplateBinding Padding}" Fill="{TemplateBinding Background}" Stroke="#000000" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End ColorItem -->
+
+    <!-- Liquid Controls DropDown -->
+    <Style TargetType="local:DropDown">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:DropDown">
+                    <Grid x:Name="RootElement">
+                        <Button x:Name="ElementButton">
+                            <Grid x:Name="ElementLayoutGrid">
+                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,-2,0,0" Content="{TemplateBinding SelectedItemContent}" />
+                                <Polygon Width="14" Height="4" HorizontalAlignment="Right" Points="0,0 8,0 4,4 0,0" Fill="#000000" />
+                            </Grid>
+                        </Button>
+                        <Popup x:Name="ElementPopup">
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End DropDown -->
+
+    <!-- Liquid Controls FileItem -->
+    <Style TargetType="local:FileItem">
+        <Setter Property="Width" Value="180" />
+        <Setter Property="Height" Value="54" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#f6fbfd" Offset="0.0" />
+                    <GradientStop Color="#d5effc" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#99defd" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:FileItem">
+                    <Grid x:Name="RootElement">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="54" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="ElementSelected" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" RadiusX="4" RadiusY="4" Fill="{TemplateBinding Background}" />
+                        <Rectangle x:Name="ElementHover" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" RadiusX="4" RadiusY="4" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" Opacity="0.6" />
+                        <Image x:Name="ElementIcon" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Stretch="None" Margin="3" />
+                        <TextBlock x:Name="ElementText" Grid.Column="1" Grid.Row="0" Margin="0 0 4 0" TextWrapping="Wrap" Text="" FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                                   FontStyle="{TemplateBinding FontStyle}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="ElementInput" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" BorderThickness="0.5" Margin="0 0 4 0" />
+                        <TextBlock x:Name="ElementOtherText" Grid.Column="1" Grid.Row="1" Margin="0 0 2 0" TextWrapping="Wrap" Text="" FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                                   FontStyle="{TemplateBinding FontStyle}" Foreground="{TemplateBinding Foreground}"
+                                   Opacity="0.8" VerticalAlignment="Top" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End FileItem -->
+    
+    <!-- Liquid Controls ItemViewer -->
+    <Style TargetType="local:ItemViewer">
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ItemViewer">
+                    <ScrollViewer x:Name="ElementContainer" Padding="2 1 1 1"
+                                  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                  VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}">
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End ItemViewer -->
+
+    <!-- Liquid Controls ItemViewerItem -->
+    <Style TargetType="local:ItemViewerItem">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#f6fbfd" Offset="0.0" />
+                    <GradientStop Color="#d5effc" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#99defd" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ItemViewerItem">
+                    <Grid x:Name="RootElement">
+                        <Rectangle x:Name="ElementSelected" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" RadiusX="4" RadiusY="4" Fill="{TemplateBinding Background}" />
+                        <Rectangle x:Name="ElementHover" RadiusX="4" RadiusY="4" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" Opacity="0.4" />
+                        <ContentPresenter Margin="{TemplateBinding Padding}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End ItemViewerItem -->
+    
+    <!-- Liquid Controls Magnifier -->
+    <Style TargetType="local:Magnifier">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Magnifier">
+                    <Canvas x:Name="RootElement">
+                        <ContentControl x:Name="ElementWhole" Content="{TemplateBinding Content}" />
+                        <Popup x:Name="ElementMagnifier" IsOpen="False">
+                            <Canvas>
+                                <ContentControl Content="{TemplateBinding MagnifierContent}" IsHitTestVisible="False">
+                                    <ContentControl.RenderTransform>
+                                        <ScaleTransform x:Name="ElementScale" />
+                                    </ContentControl.RenderTransform>
+                                    <ContentControl.Clip>
+                                        <RectangleGeometry x:Name="ElementClipGeometry" />
+                                    </ContentControl.Clip>
+                                </ContentControl>
+                                <ContentControl x:Name="ElementCover" Content="{TemplateBinding CoverContent}" IsHitTestVisible="False">
+                                </ContentControl>
+                            </Canvas>
+                        </Popup>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Magnifier -->
+
+    <!-- Liquid Controls NumericUpDownPlus -->
+    <Style TargetType="local:NumericUpDownPlus">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NumericUpDownPlus">
+                    <Grid x:Name="RootElement">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="16" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="ElementInput" Grid.Column="0" Grid.RowSpan="2" Text="0" Padding="3" FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                                   FontStyle="{TemplateBinding FontStyle}" Foreground="{TemplateBinding Foreground}" />
+                        <RepeatButton x:Name="ElementUp" Grid.Column="1" Grid.Row="0" Width="16">
+                            <RepeatButton.Content>
+                                <Polygon Points="0,3 4,-1 8,3 0,3" StrokeThickness="0" Fill="#ff313131" />
+                            </RepeatButton.Content>
+                        </RepeatButton>
+                        <RepeatButton x:Name="ElementDown" Grid.Column="1" Grid.Row="1" Width="16">
+                            <RepeatButton.Content>
+                                <Polygon Points="0,-1 4,3 8,-1 0,-1" StrokeThickness="0" Fill="#ff313131" />
+                            </RepeatButton.Content>
+                        </RepeatButton>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End NumericUpDownPlus -->
+
+    <!-- Liquid Controls ProgressBar -->
+    <Style TargetType="local:ProgressBarPlus">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#cccccc" Offset="0.0" />
+                    <GradientStop Color="#ffffff" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#aaaaaa" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="FillBrush" Value="#3ad03a" />
+        <Setter Property="FillStroke" Value="#aaaaaa" />
+        <Setter Property="FillStrokeThickness" Value="0.5" />
+        <Setter Property="OverlayBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#99ffffff" Offset="0.0" />
+                    <GradientStop Color="#77ffffff" Offset="0.5" />
+                    <GradientStop Color="#22ffffff" Offset="0.5" />
+                    <GradientStop Color="#00ffffff" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ProgressBarPlus">
+                    <Grid x:Name="RootElement" Background="#00ffffff">
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="Grid.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ElementFader" BeginTime="0">
+                                        <DoubleAnimation Storyboard.TargetName="ElementOverlay" Storyboard.TargetProperty="Opacity" From="0.8" To="1.0" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Grid.Triggers>
+
+                        <Rectangle x:Name="ElementBackground" StrokeThickness="{TemplateBinding BorderThickness}" Stroke="{TemplateBinding BorderBrush}" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" Fill="{TemplateBinding Background}" />
+                        <Rectangle x:Name="ElementFilling" HorizontalAlignment="Left" StrokeThickness="{TemplateBinding FillStrokeThickness}" Stroke="{TemplateBinding FillStroke}" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" Margin="2" Fill="{TemplateBinding FillBrush}" />
+                        <TextBlock TextAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Text}" FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                                   FontStyle="{TemplateBinding FontStyle}" Foreground="{TemplateBinding Foreground}"/>
+                        <Rectangle x:Name="ElementOverlay" HorizontalAlignment="Left" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" Fill="{TemplateBinding OverlayBrush}" Margin="2" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End ProgressBar -->
+
+    <!-- Liquid Controls RollerBlind -->
+    <Style TargetType="local:RollerBlind">
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RollerBlind">
+                    <Canvas x:Name="RootElement" Background="{TemplateBinding Background}">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementOpen" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTop" Storyboard.TargetProperty="(Canvas.Top)" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBottom" Storyboard.TargetProperty="(Canvas.Top)" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementClose" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTop" Storyboard.TargetProperty="(Canvas.Top)" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBottom" Storyboard.TargetProperty="(Canvas.Top)" />
+                            </Storyboard>
+                        </Canvas.Resources>
+                        <Canvas.Clip>
+                            <RectangleGeometry x:Name="ElementClipping" />
+                        </Canvas.Clip>
+                        <ContentPresenter x:Name="ElementContent" />
+                        <ContentPresenter x:Name="ElementTop" Content="{TemplateBinding CoverTop}" />
+                        <ContentPresenter x:Name="ElementBottom" Content="{TemplateBinding CoverBottom}" />
+                        <Border x:Name="ElementBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End RollerBlind -->
+
+    <!-- Liquid Controls Scroller -->
+    <Style TargetType="local:Scroller">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Scroller">
+                    <Grid x:Name="RootElement">
+                        <Canvas x:Name="ElementCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Canvas.Clip>
+                                <RectangleGeometry x:Name="ElementClipping" />
+                            </Canvas.Clip>
+                            <ContentPresenter x:Name="ElementContent" Canvas.Left="{TemplateBinding HorizontalOffset}" Canvas.Top="{TemplateBinding VerticalOffset}" />
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Scroller -->
+
+    <!-- Liquid Controls TextRollerBlind -->
+    <Style TargetType="local:TextRollerBlind">
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TextRollerBlind">
+                    <Canvas x:Name="RootElement" Background="{TemplateBinding Background}">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementOpen" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTop" Storyboard.TargetProperty="(Canvas.Top)" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBottom" Storyboard.TargetProperty="(Canvas.Top)" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementClose" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTop" Storyboard.TargetProperty="(Canvas.Top)" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBottom" Storyboard.TargetProperty="(Canvas.Top)" />
+                            </Storyboard>
+                        </Canvas.Resources>
+                        <Canvas.Clip>
+                            <RectangleGeometry x:Name="ElementClipping" />
+                        </Canvas.Clip>
+                        <ContentPresenter x:Name="ElementContent" />
+                        <ContentPresenter x:Name="ElementTop">
+                            <Grid>
+                                <Grid.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="#ffffffff" Offset="0.0" />
+                                        <GradientStop Color="#fff0f0f0" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Grid.Background>
+                                <TextBlock x:Name="ElementTopText" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" Text="" />
+                            </Grid>
+                        </ContentPresenter>
+                        <ContentPresenter x:Name="ElementBottom">
+                            <Grid>
+                                <Grid.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="#fff0f0f0" Offset="0.0" />
+                                        <GradientStop Color="#ffefefef" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Grid.Background>
+                                <TextBlock x:Name="ElementBottomText" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Text="" />
+                                <TextBlock x:Name="ElementBottomSelectedText" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 4" Text="" />
+                            </Grid>
+                        </ContentPresenter>
+                        <Border x:Name="ElementBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End TextRollerBlind -->
+    
+    <!-- Liquid Controls TextRotatorBlind -->
+    <Style TargetType="local:TextRotatorBlind">
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TextRotatorBlind">
+                    <Canvas x:Name="RootElement" Background="{TemplateBinding Background}">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementOpen" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTop" Storyboard.TargetProperty="(Canvas.Top)" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBottom" Storyboard.TargetProperty="(Canvas.Top)" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementClose" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTop" Storyboard.TargetProperty="(Canvas.Top)" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBottom" Storyboard.TargetProperty="(Canvas.Top)" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementRotateOpen" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTopProjection" From="0" To="90" />
+                                <DoubleAnimation Storyboard.TargetName="ElementContentProjection" From="270" To="360" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementRotateClose" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementTopProjection" From="270" To="360" />
+                                <DoubleAnimation Storyboard.TargetName="ElementContentProjection" From="0" To="90" />
+                            </Storyboard>
+                        </Canvas.Resources>
+                        <Canvas.Clip>
+                            <RectangleGeometry x:Name="ElementClipping" />
+                        </Canvas.Clip>
+                        <ContentPresenter x:Name="ElementContent">
+                            <ContentPresenter.Projection>
+                                <PlaneProjection x:Name="ElementContentProjection" />
+                            </ContentPresenter.Projection>
+                        </ContentPresenter>
+                        <ContentPresenter x:Name="ElementTop">
+                            <ContentPresenter.Projection>
+                                <PlaneProjection x:Name="ElementTopProjection" />
+                            </ContentPresenter.Projection>
+                            <Grid>
+                                <Grid.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="#ffffffff" Offset="0.0" />
+                                        <GradientStop Color="#fff0f0f0" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Grid.Background>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock x:Name="ElementTopText" TextAlignment="Center" Text="" />
+                                    <TextBlock x:Name="ElementBottomText" TextAlignment="Center" Text="" />
+                                </StackPanel>
+                                <TextBlock x:Name="ElementBottomSelectedText" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 4" Text="" />
+                            </Grid>
+                        </ContentPresenter>
+                        <Border x:Name="ElementBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End TextRotatorBlind -->
+    
+    <!-- Liquid Controls TimePickerPlus -->
+    <Style TargetType="local:TimePickerPlus">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TimePickerPlus">
+                    <Grid x:Name="RootElement">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="ElementHours" Grid.Column="0" Width="50" Height="24" />
+                        <ComboBox x:Name="ElementMinutes" Grid.Column="1" Width="50" Height="24" Margin="4 0 0 0"  />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End TimePickerPlus -->
+        
+    <!-- Liquid Controls Viewer -->
+    <Style TargetType="local:Viewer">
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="SliderBackground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#cc888888" Offset="0.0" />
+                    <GradientStop Color="#ccaaaaaa" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="SliderBorderBrush" Value="#cc888888" />
+        <Setter Property="SliderBorderThickness" Value="1" />
+        <Setter Property="SliderCornerRadius" Value="10" />
+        <Setter Property="Minimum" Value="0.05" />
+        <Setter Property="Maximum" Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Viewer">
+                    <Canvas x:Name="RootElement">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementFadeOut" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementSliderGrid" Storyboard.TargetProperty="Opacity" From="1.0" To="0.3" Duration="0:0:0.3"/>
+                            </Storyboard>
+                            <Storyboard x:Name="ElementFadeIn" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementSliderGrid" Storyboard.TargetProperty="Opacity" From="0.3" To="1.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </Canvas.Resources>
+                        <ScrollViewer x:Name="ElementContainer" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <Canvas x:Name="ElementChildren">
+                                <Canvas.RenderTransform>
+                                    <ScaleTransform x:Name="ElementScale" />
+                                </Canvas.RenderTransform>
+                                <ContentPresenter x:Name="ElementContent" />
+                            </Canvas>
+                        </ScrollViewer>
+                        <Grid x:Name="ElementSliderGrid" Opacity="0.3">
+                            <Rectangle Width="Auto" Height="Auto" RadiusX="{TemplateBinding SliderCornerRadius}" RadiusY="{TemplateBinding SliderCornerRadius}" Fill="{TemplateBinding SliderBackground}" Stroke="{TemplateBinding SliderBorderBrush}" StrokeThickness="{TemplateBinding SliderBorderThickness}" />
+                            <Slider x:Name="ElementSliderX" Width="Auto" Height="Auto" SmallChange="10" Margin="2" Maximum="{TemplateBinding Maximum}" Minimum="{TemplateBinding Minimum}" Orientation="Horizontal" />
+                        </Grid>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Viewer -->
+</ResourceDictionary>

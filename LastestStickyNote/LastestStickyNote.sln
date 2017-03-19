@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LastestStickyNote", "LastestStickyNote\LastestStickyNote.csproj", "{A4D69F9C-8C62-4543-84D3-6C56430429DE}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "StickyNote_Web", "StickyNote_Web", "{79D472AE-933B-4A0E-806D-A1B55FFB3B44}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/StickyNote_Web"
+		Debug.AspNetCompiler.PhysicalPath = "StickyNote_Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\StickyNote_Web\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/StickyNote_Web"
+		Release.AspNetCompiler.PhysicalPath = "StickyNote_Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\StickyNote_Web\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1067"
+		DefaultWebSiteLanguage = "Visual C#"
+		ProjOutputReferences = "{A4D69F9C-8C62-4543-84D3-6C56430429DE}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liquid.Popup", "..\Liquid Controls 5_3_2 Source\Liquid.Popup\Liquid.Popup.csproj", "{608E1FC5-5CA1-4D87-BC18-819559E7FDA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4D69F9C-8C62-4543-84D3-6C56430429DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D69F9C-8C62-4543-84D3-6C56430429DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D69F9C-8C62-4543-84D3-6C56430429DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D69F9C-8C62-4543-84D3-6C56430429DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D472AE-933B-4A0E-806D-A1B55FFB3B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D472AE-933B-4A0E-806D-A1B55FFB3B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D472AE-933B-4A0E-806D-A1B55FFB3B44}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D472AE-933B-4A0E-806D-A1B55FFB3B44}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{608E1FC5-5CA1-4D87-BC18-819559E7FDA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608E1FC5-5CA1-4D87-BC18-819559E7FDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608E1FC5-5CA1-4D87-BC18-819559E7FDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608E1FC5-5CA1-4D87-BC18-819559E7FDA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

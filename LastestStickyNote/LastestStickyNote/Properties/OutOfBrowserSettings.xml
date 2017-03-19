@@ -1,0 +1,15 @@
+<OutOfBrowserSettings ShortName="Sticky Note's" EnableGPUAcceleration="False" ShowInstallMenuItem="True">
+  <OutOfBrowserSettings.Blurb>Silverlight 4 Sticky Note's helps you to manage any number of notes on desktop.</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="Sticky Note's" WindowStyle="BorderlessRoundCornersWindow" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.SecuritySettings>
+    <SecuritySettings ElevatedPermissions="Required" />
+  </OutOfBrowserSettings.SecuritySettings>
+  <OutOfBrowserSettings.Icons>
+    <Icon Size="16,16">Images/S_Noteicon.png</Icon>
+    <Icon Size="32,32">Images/S_Noteicon.png</Icon>
+    <Icon Size="48,48">Images/S_Noteicon.png</Icon>
+    <Icon Size="128,128">Images/S_Noteicon.png</Icon>
+  </OutOfBrowserSettings.Icons>
+</OutOfBrowserSettings>

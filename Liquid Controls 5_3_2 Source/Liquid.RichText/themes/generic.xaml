@@ -1,0 +1,195 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Liquid;assembly=Liquid.RichText">
+
+    <!-- Liquid Controls Test -->
+    <Style TargetType="local:Test">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Test">
+                    <TextBox x:Name="Core"
+                        Text="{TemplateBinding Text}"
+                        Height="26" HorizontalAlignment="Left"
+                        Width="50"
+                        FontSize="12" Foreground="#FF000000" 
+                        />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Test -->
+    
+    <!-- Liquid Controls Bullet -->
+    <Style TargetType="local:Bullet">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Bullet">
+                    <Grid>
+                        <ContentControl x:Name="ElementContent" Margin="0 0 4 0" HorizontalAlignment="Right">
+                            <TextBlock Text="{TemplateBinding Text}" FontFamily="{Binding FontFamily}"
+                               FontSize="{TemplateBinding FontSize}" FontWeight="{Binding FontWeight}"
+                               FontStyle="{Binding FontStyle}" Foreground="{Binding Foreground}"/>
+                        </ContentControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Bullet -->
+    
+    <!-- Liquid Controls PlaceHolder -->
+    <Style TargetType="local:PlaceHolder">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#f8f8ff" Offset="0.0" />
+                    <GradientStop Color="#ddddff" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="3 1 3 1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PlaceHolder">
+                    <Border CornerRadius="3" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End PlaceHolder -->
+
+    <!-- Liquid Controls RichTextBlock -->
+    <Style TargetType="local:RichTextBlock">
+        <Setter Property="Background" Value="#00ffffff" />
+        <Setter Property="PopupTitle" Value="Spelling Suggestions:" />
+        <Setter Property="PopupAddText" Value=" Add " />
+        <Setter Property="PopupReplaceText" Value=" Replace " />
+        <Setter Property="SelectionBackground" Value="#506484f6" />
+        <Setter Property="SelectMode" Value="ReadOnly" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RichTextBlock">
+                    <local:RichTextPanel x:Name="ElementChildren" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{TemplateBinding Background}">
+                        <local:RichTextPanel.Resources>
+                            <Storyboard x:Name="ElementCursorBlink" BeginTime="0" RepeatBehavior="forever">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ElementCursor" Storyboard.TargetProperty="(UIElement.Opacity)" Duration="00:00:01">
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                    <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                    <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </local:RichTextPanel.Resources>
+                        <local:RichTextPanel.Children>
+                            <Rectangle x:Name="ContentElementBackGround"  IsHitTestVisible="False" Fill="White" Opacity="0" />
+                            <ContentControl x:Name="ContentElement" IsTabStop="False" Width="0" Height="0" Opacity="0" />
+                            <Canvas x:Name="ElementObjectSelection" />
+                            <Rectangle x:Name="ElementCursor" Width="1" IsHitTestVisible="False" Fill="#000000" Visibility="Collapsed" />
+                            <Polygon x:Name="ElementSelection" IsHitTestVisible="False" Fill="{TemplateBinding SelectionBackground}" />
+                            <Popup x:Name="ElementBubblePopup">
+                                <Canvas x:Name="ElementBubble" Width="168" Height="108" Cursor="Arrow">
+                                    <Canvas.RenderTransform>
+                                        <ScaleTransform x:Name="ElementBubbleScale" ScaleX="1" ScaleY="1" />
+                                    </Canvas.RenderTransform>
+                                    <Polygon x:Name="ElementBubbleBackground" Stroke="#888888" StrokeThickness="1">
+                                        <Polygon.Fill>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="#ffffff" Offset="0.0" />
+                                                <GradientStop Color="#eeeeee" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Polygon.Fill>
+                                    </Polygon>
+                                    <TextBlock Text="{TemplateBinding PopupTitle}" FontFamily="Arial" FontSize="14" FontWeight="Normal" Canvas.Left="8" Canvas.Top="8" />
+                                    <ComboBox x:Name="ElementSuggestions" FontFamily="Arial" FontSize="14" FontWeight="Normal" Canvas.Left="8" Canvas.Top="30" Width="150" />
+                                    <Grid Canvas.Left="8" Canvas.Top="65" Width="150">
+                                        <Button x:Name="ElementAdd" Content="{TemplateBinding PopupAddText}" FontFamily="Arial" FontSize="14" FontWeight="Normal" IsTabStop="False" HorizontalAlignment="Left" />
+                                        <Button x:Name="ElementReplace" Content="{TemplateBinding PopupReplaceText}" FontFamily="Arial" FontSize="14" FontWeight="Normal" IsTabStop="False" Margin="2 0 0 0" HorizontalAlignment="Right" />
+                                    </Grid>
+                                </Canvas>
+                            </Popup>
+                            <ContentControl x:Name="ElementContext" IsTabStop="False" Content="{TemplateBinding ContextMenu}" Cursor="Arrow" />
+                        </local:RichTextPanel.Children>
+                    </local:RichTextPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End RichTextBlock -->
+
+    <!-- Liquid Controls RichTextBox -->
+    <Style TargetType="local:RichTextBox">
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#a4a4a4" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="PopupTitle" Value="Spelling Suggestions:" />
+        <Setter Property="PopupAddText" Value=" Add " />
+        <Setter Property="PopupReplaceText" Value=" Replace " />
+        <Setter Property="SelectionBackground" Value="#506484f6" />
+        <Setter Property="SelectMode" Value="Edit" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:RichTextBox">
+                    <ScrollViewer x:Name="ElementContainer" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" IsTabStop="False">
+                        <Border x:Name="ElementGrid" VerticalAlignment="Top">
+                            <local:RichTextPanel x:Name="ElementChildren" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{TemplateBinding Background}">
+                                <local:RichTextPanel.Resources>
+                                    <Storyboard x:Name="ElementCursorBlink" BeginTime="0" RepeatBehavior="forever">
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ElementCursor" Storyboard.TargetProperty="(UIElement.Opacity)" Duration="00:00:01">
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </local:RichTextPanel.Resources>
+                                <local:RichTextPanel.RenderTransform>
+                                    <ScaleTransform x:Name="ElementScale" ScaleX="1" ScaleY="1" />
+                                </local:RichTextPanel.RenderTransform>
+                                <local:RichTextPanel.Children>
+                                    <Rectangle x:Name="ContentElementBackGround"  IsHitTestVisible="False" Fill="White" Opacity="0" />
+                                    <ContentControl x:Name="ContentElement" IsTabStop="False" Width="0" Height="0" Opacity="0" />
+                                    <Canvas x:Name="ElementObjectSelection" />
+                                    <Rectangle x:Name="ElementCursor" Width="1" IsHitTestVisible="False" Fill="#000000" Visibility="Collapsed" />
+                                    <Polygon x:Name="ElementSelection" IsHitTestVisible="False" Fill="{TemplateBinding SelectionBackground}" />
+                                    <Popup x:Name="ElementBubblePopup">
+                                        <Canvas x:Name="ElementBubble" Width="168" Height="108" Cursor="Arrow">
+                                            <Canvas.RenderTransform>
+                                                <ScaleTransform x:Name="ElementBubbleScale" ScaleX="1" ScaleY="1" />
+                                            </Canvas.RenderTransform>
+                                            <Polygon x:Name="ElementBubbleBackground" Stroke="#888888" StrokeThickness="1">
+                                                <Polygon.Fill>
+                                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                        <GradientStop Color="#ffffff" Offset="0.0" />
+                                                        <GradientStop Color="#eeeeee" Offset="1.0" />
+                                                    </LinearGradientBrush>
+                                                </Polygon.Fill>
+                                            </Polygon>
+                                            <TextBlock Text="{TemplateBinding PopupTitle}" FontFamily="Arial" FontSize="14" FontWeight="Normal" Canvas.Left="8" Canvas.Top="8" />
+                                            <ComboBox x:Name="ElementSuggestions" Canvas.Left="8" Canvas.Top="30" FontFamily="Arial" FontSize="14" FontWeight="Normal" Width="150" />
+                                            <Grid Canvas.Left="8" Canvas.Top="65" Width="150">
+                                                <Button x:Name="ElementAdd" FontFamily="Arial" FontSize="14" FontWeight="Normal" Content="{TemplateBinding PopupAddText}" IsTabStop="False" HorizontalAlignment="Left" />
+                                                <Button x:Name="ElementReplace" FontFamily="Arial" FontSize="14" FontWeight="Normal" Content="{TemplateBinding PopupReplaceText}" IsTabStop="False" Margin="2 0 0 0" HorizontalAlignment="Right" />
+                                            </Grid>
+                                        </Canvas>
+                                    </Popup>
+                                    <ContentControl x:Name="ElementContext" IsTabStop="False" Content="{TemplateBinding ContextMenu}" Cursor="Arrow">
+                                        <ContentControl.RenderTransform>
+                                            <ScaleTransform x:Name="ElementContextScale" ScaleX="1" ScaleY="1" />
+                                        </ContentControl.RenderTransform>
+                                    </ContentControl>
+                                </local:RichTextPanel.Children>
+                            </local:RichTextPanel>
+                        </Border>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End RichTextBox -->
+</ResourceDictionary>

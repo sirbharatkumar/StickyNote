@@ -1,0 +1,4 @@
+[autorun]
+open = install.hta
+shell\install = &Install
+shell\install\command = setup.exe

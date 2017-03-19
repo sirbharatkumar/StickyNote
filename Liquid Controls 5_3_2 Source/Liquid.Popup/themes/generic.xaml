@@ -1,0 +1,276 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Liquid;assembly=Liquid.Popup">
+
+    <!-- Liquid Controls Bubble -->
+    <Style TargetType="local:Bubble">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#ffffff" Offset="0.0" />
+                    <GradientStop Color="#eeeeee" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#888888" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Bubble">
+                    <Canvas x:Name="RootElement" Background="#00ffffff" Opacity="0">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementFadeIn" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                            <Storyboard x:Name="ElementFadeOut" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </Canvas.Resources>
+                        <Polygon x:Name="ElementBackground" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Fill="{TemplateBinding Background}">
+                            <Polygon.Effect>
+                                <DropShadowEffect Opacity="0.6" />
+                            </Polygon.Effect>
+                        </Polygon>
+                        <ContentPresenter />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Bubble -->
+
+    <!-- Liquid Controls CursorPlus -->
+    <Style TargetType="local:CursorPlus">
+        <Setter Property="Background" Value="#00ffffff" />
+        <Setter Property="Foreground" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="#000000" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:CursorPlus">
+                    <Grid x:Name="RootElement" Background="{TemplateBinding Background}" IsHitTestVisible="False">
+                        <Polygon x:Name="ElementNWSE" Points="0,0 6,0 6,1 4.5,2.5 13.5,11.5 15,10 16,11 16,16 11,16 10,15 11.5,13.5 2.5,4.5 1,6 0,5 0,0" Fill="{TemplateBinding Foreground}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" />
+                        <Polygon x:Name="ElementNESW" Points="16,0 10,0 10,1 11.5,2.5 2.5,11.5 1,10 0,11 0,16 5,16 6,15 4.5,13.5 13.5,4.5 15,6 16,5 16,0" Fill="{TemplateBinding Foreground}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" />
+                        <Polygon x:Name="ElementResize" Points="11,0 14.5,5 11.5,5 11.5,9.5 17,9.5 17.5,7 22,11 17.5,15 17,12.5 12.5,12.5 12.5,17 15,17.5 11,22 7,17.5 9.5,17 9.5,12.5 5,12.5 4.5,15 0,11 4.5,7 5,9.5 9.5,9.5 9.5,5 6.5,5 11,0" Fill="{TemplateBinding Foreground}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End CursorPlus -->
+
+    <!-- Liquid Controls Dialog -->
+    <Style TargetType="local:Dialog">
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush GradientOrigin="0.9,0.9" Center="0.5,0.5" RadiusX="1.0" RadiusY="1.0">
+                    <GradientStop Color="#f0f0f0" Offset="0.0" />
+                    <GradientStop Color="#e0e0e0" Offset="0.6" />
+                    <GradientStop Color="#f0f0f0" Offset="1.0" />
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#888888" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TitleForeground" Value="#ffffff" />
+        <Setter Property="ShadowBrush" Value="#888888" />
+        <Setter Property="DisabledBrush" Value="#22ffffff" />
+        <Setter Property="TitleBarBackground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#626C88" Offset="0.0" />
+                    <GradientStop Color="#393F4D" Offset="0.5" />
+                    <GradientStop Color="#151516" Offset="0.5" />
+                    <GradientStop Color="#3C476F" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TitleBarBorderBrush" Value="#7A8295" />
+        <Setter Property="TitleBarBorderThickness" Value="0.5" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Dialog">
+                    <Canvas x:Name="RootElement" Background="#00ffffff" Opacity="0">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementScale" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementBackground" Storyboard.TargetProperty="Width" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBackground" Storyboard.TargetProperty="Height" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetName="ElementTopBar" Storyboard.TargetProperty="Width" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" Duration="0:0:0.1" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementFadeOut" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                            <Storyboard x:Name="ElementFadeIn" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                            <Storyboard x:Name="ElementToggleExpandRight" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementBackground" Storyboard.TargetProperty="Width"/>
+                                <DoubleAnimation Storyboard.TargetName="ElementTopBar" Storyboard.TargetProperty="Width"/>
+                                <DoubleAnimation Storyboard.TargetName="ElementTopButtons" Storyboard.TargetProperty="(Canvas.Left)"/>
+                                <DoubleAnimation Storyboard.TargetName="ElementRightContent" Storyboard.TargetProperty="(Canvas.Left)"/>
+                                <DoubleAnimation Storyboard.TargetName="ElementButtons" Storyboard.TargetProperty="(Canvas.Left)"/>
+                            </Storyboard>
+                            <Storyboard x:Name="ElementToggleExpandBottom" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementBackground" Storyboard.TargetProperty="Height"/>
+                                <DoubleAnimation Storyboard.TargetName="ElementBottomContent" Storyboard.TargetProperty="(Canvas.Top)"/>
+                                <DoubleAnimation Storyboard.TargetName="ElementButtons" Storyboard.TargetProperty="(Canvas.Top)"/>
+                            </Storyboard>
+                        </Canvas.Resources>
+                        <Rectangle x:Name="ElementDisable" Fill="{TemplateBinding DisabledBrush}" />
+                        <Rectangle x:Name="ElementBackground" Stroke="{TemplateBinding BorderBrush}" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" Fill="{TemplateBinding Background}">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Opacity="0.6" />
+                            </Rectangle.Effect>
+                        </Rectangle>
+
+                        <Canvas x:Name="ElementWhole" Margin="2 2 2 2">
+                            <Canvas.Clip>
+                                <RectangleGeometry x:Name="ElementClipping" />
+                            </Canvas.Clip>
+                            <Rectangle x:Name="ElementTopBar" Margin="1 1 0 0" Height="21" Fill="{TemplateBinding TitleBarBackground}" StrokeThickness="{TemplateBinding TitleBarBorderThickness}" Stroke="{TemplateBinding TitleBarBorderBrush}" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" />
+                            <TextBlock x:Name="ElementTitle" Canvas.Left="6" Canvas.Top="4" FontSize="12" FontFamily="Arial" Text="" Foreground="{TemplateBinding TitleForeground}" IsHitTestVisible="False" />
+                            <StackPanel x:Name="ElementTopButtons" Orientation="Horizontal" Margin="0 2 0 0">
+                                <Button x:Name="ElementMin" Width="17" Height="18">
+                                    <Polygon Points="0,7 9,7 9,9 0,9 0,7" StrokeThickness="0" Fill="#313131" />
+                                </Button>
+                                <Button x:Name="ElementRestore" Width="17" Height="18" Margin="1 0 0 0">
+                                    <Grid>
+                                        <Rectangle Margin="2 -2 0 0" Width="9" Height="9" StrokeThickness="1.5" Stroke="#313131" />
+                                        <Rectangle Margin="-3 3 0 0" Width="9" Height="9" StrokeThickness="1.5" Stroke="#313131" />
+                                    </Grid>
+                                </Button>
+                                <Button x:Name="ElementMax" Width="17" Height="18" Margin="1 0 0 0">
+                                    <Rectangle Width="9" Height="9" StrokeThickness="1.5" Stroke="#313131" />
+                                </Button>
+                                <Button x:Name="ElementCross" Width="17" Height="18" Margin="1 0 8 0">
+                                    <Polygon Points="0,0 1,0 4,3 5,3 8,0 9,0 9,1 6,4 6,5 9,8 9,9 8,9 5,6 4,6 1,9 0,9 0,8 3,5 3,4 0,1 0,0" StrokeThickness="0" Fill="#313131" />
+                                </Button>
+                            </StackPanel>
+                            <ContentPresenter x:Name="ElementContent" Canvas.Left="1" Canvas.Top="22" Canvas.ZIndex="1" />
+                            <Canvas x:Name="ElementRight" Canvas.Top="22" Canvas.ZIndex="1">
+                                <Canvas.Clip>
+                                    <RectangleGeometry x:Name="ElementRightClipping" />
+                                </Canvas.Clip>
+                                <ContentPresenter x:Name="ElementRightContent" Content="{TemplateBinding ContentRight}"/>
+                            </Canvas>
+                            <Canvas x:Name="ElementBottom" Canvas.Top="22" Canvas.ZIndex="1">
+                                <Canvas.Clip>
+                                    <RectangleGeometry x:Name="ElementBottomClipping" />
+                                </Canvas.Clip>
+                                <ContentPresenter x:Name="ElementBottomContent" Content="{TemplateBinding ContentBottom}"/>
+                            </Canvas>
+                            <StackPanel x:Name="ElementButtons" Margin="0 3 5 5" Orientation="Horizontal" />
+                        </Canvas>
+                        <local:CursorPlus x:Name="ElementCursor" Visibility="Collapsed" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End Dialog -->
+    
+    <!-- Liquid Controls MessageBox -->
+    <Style TargetType="local:MessageBox">
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="150" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush GradientOrigin="0.9,0.9" Center="0.5,0.5" RadiusX="1.0" RadiusY="1.0">
+                    <GradientStop Color="#f0f0f0" Offset="0.0" />
+                    <GradientStop Color="#e0e0e0" Offset="0.6" />
+                    <GradientStop Color="#f0f0f0" Offset="1.0" />
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#888888" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TitleForeground" Value="#ffffff" />
+        <Setter Property="ShadowBrush" Value="#888888" />
+        <Setter Property="DisabledBrush" Value="#22ffffff" />
+        <Setter Property="TitleBarBackground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#626C88" Offset="0.0" />
+                    <GradientStop Color="#393F4D" Offset="0.5" />
+                    <GradientStop Color="#151516" Offset="0.5" />
+                    <GradientStop Color="#3C476F" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TitleBarBorderBrush" Value="#7A8295" />
+        <Setter Property="TitleBarBorderThickness" Value="0.5" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MessageBox">
+                    <Canvas x:Name="RootElement" Background="#00ffffff" Opacity="0">
+                        <Canvas.Resources>
+                            <Storyboard x:Name="ElementScale" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="ElementBackground" Storyboard.TargetProperty="Width" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetName="ElementBackground" Storyboard.TargetProperty="Height" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetName="ElementTopBar" Storyboard.TargetProperty="Width" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" Duration="0:0:0.1" />
+                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" Duration="0:0:0.1" />
+                            </Storyboard>
+                            <Storyboard x:Name="ElementFadeOut" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                            <Storyboard x:Name="ElementFadeIn" BeginTime="0">
+                                <DoubleAnimation Storyboard.TargetName="RootElement" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </Canvas.Resources>
+
+                        <Rectangle x:Name="ElementDisable" Fill="{TemplateBinding DisabledBrush}" />
+                        <Rectangle x:Name="ElementBackground" Stroke="{TemplateBinding BorderBrush}" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" Fill="{TemplateBinding Background}" />
+
+                        <Canvas x:Name="ElementWhole" Margin="2 2 0 0">
+                            <Canvas.Clip>
+                                <RectangleGeometry x:Name="ElementClipping" />
+                            </Canvas.Clip>
+                            <Rectangle x:Name="ElementTopBar" Margin="1 1 0 0" Height="21" Fill="{TemplateBinding TitleBarBackground}" StrokeThickness="{TemplateBinding TitleBarBorderThickness}" Stroke="{TemplateBinding TitleBarBorderBrush}" RadiusX="{TemplateBinding CornerRadius}" RadiusY="{TemplateBinding CornerRadius}" />
+                            <TextBlock x:Name="ElementTitle" Canvas.Left="6" Canvas.Top="4" FontSize="12" FontFamily="Arial" Text="" Foreground="{TemplateBinding TitleForeground}" IsHitTestVisible="False" />
+                            <StackPanel x:Name="ElementTopButtons" Orientation="Horizontal" Margin="0 2 0 0">
+                                <Button x:Name="ElementMin" Width="17" Height="18">
+                                    <Polygon Points="0,7 9,7 9,9 0,9 0,7" StrokeThickness="0" Fill="#313131" />
+                                </Button>
+                                <Button x:Name="ElementRestore" Width="17" Height="18" Margin="1 0 0 0">
+                                    <Grid>
+                                        <Rectangle Margin="2 -2 0 0" Width="9" Height="9" StrokeThickness="1.5" Stroke="#313131" />
+                                        <Rectangle Margin="-3 3 0 0" Width="9" Height="9" StrokeThickness="1.5" Stroke="#313131" />
+                                    </Grid>
+                                </Button>
+                                <Button x:Name="ElementMax" Width="17" Height="18" Margin="1 0 0 0">
+                                    <Rectangle Width="9" Height="9" StrokeThickness="1.5" Stroke="#313131" />
+                                </Button>
+                                <Button x:Name="ElementCross" Width="17" Height="18" Margin="1 0 8 0">
+                                    <Polygon Points="0,0 1,0 4,3 5,3 8,0 9,0 9,1 6,4 6,5 9,8 9,9 8,9 5,6 4,6 1,9 0,9 0,8 3,5 3,4 0,1 0,0" StrokeThickness="0" Fill="#313131" />
+                                </Button>
+                            </StackPanel>
+                            <ContentPresenter x:Name="ElementContent" Canvas.Left="1" Canvas.Top="22" Canvas.ZIndex="1">
+                                <Grid x:Name="ElementGrid">
+                                    <TextBlock x:Name="ElementText" Padding="{TemplateBinding Padding}" TextWrapping="Wrap"
+                                   Text="" FontFamily="{TemplateBinding FontFamily}"
+                                   FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}"
+                                   FontStyle="{TemplateBinding FontStyle}" Foreground="{TemplateBinding Foreground}"/>
+                                </Grid>
+                            </ContentPresenter>
+                            <StackPanel x:Name="ElementButtons" Margin="0 3 5 5" Orientation="Horizontal" />
+                        </Canvas>
+                        <local:CursorPlus x:Name="ElementCursor" Visibility="Collapsed" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End MessageBox -->
+</ResourceDictionary>
